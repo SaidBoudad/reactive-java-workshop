@@ -10,11 +10,15 @@ public class Exercise4 {
         // Use ReactiveSources.intNumberMono()
 
         // Print the value from intNumberMono when it emits
-        ReactiveSources.intNumberMono().subscribe(number -> System.out.println(number));
+        ReactiveSources.intNumberMono().subscribe(
+                number -> System.out.println(number),
+                error -> System.out.println(error.getMessage()),
+                () -> System.out.println("Complete"));
 
         // Get the value from the Mono into an integer variable
         Integer number = ReactiveSources.intNumberMono().block();//this method will block until this event emit
         System.out.println(number);
+
         //  using block() should be avoided as it can potentially block the thread and cause performance issues
         //  or with Optional<T>
         Optional<Integer> number1 = ReactiveSources.intNumberMono().blockOptional();
