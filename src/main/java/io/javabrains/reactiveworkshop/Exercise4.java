@@ -12,8 +12,8 @@ public class Exercise4 {
         // Print the value from intNumberMono when it emits
         ReactiveSources.intNumberMono().subscribe(
                 number -> System.out.println(number),
-                error -> System.out.println(error.getMessage()),
-                () -> System.out.println("Complete"));
+                error -> System.out.println(error.getMessage()),   //will execute when it happens an error
+                () -> System.out.println("Complete"));    //will be executed after finishing the stream here after getting the mono item
 
         // Get the value from the Mono into an integer variable
         Integer number = ReactiveSources.intNumberMono().block();//this method will block until this event emit
