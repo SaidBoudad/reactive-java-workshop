@@ -22,6 +22,7 @@ public class Exercise5 {
         // It is important to properly manage the demand for items to avoid backpressure and ensure efficient processing of data.
         ReactiveSources.intNumbersFlux().subscribe(new MySubscriber<>());
 
+
         System.out.println("Press a key to end");
         System.in.read();
     }
@@ -31,11 +32,11 @@ public class Exercise5 {
 class MySubscriber<T> extends BaseSubscriber<T> {
     public void hookOnSubscribe(Subscription subscription) {
         System.out.println("subscribed happend");
-        request(1);
+        request(2);
     }
 
     public void hookOnNext(T value) {
         System.out.println(value.toString() + "received");
-        request(1);
+        request(2); //this is give a message 'OK to push' but not pull
     }
 }

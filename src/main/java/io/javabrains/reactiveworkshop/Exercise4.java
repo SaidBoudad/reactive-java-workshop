@@ -16,10 +16,12 @@ public class Exercise4 {
                 () -> System.out.println("Complete"));    //will be executed after finishing the stream here after getting the mono item
 
         // Get the value from the Mono into an integer variable
-        Integer number = ReactiveSources.intNumberMono().block();//this method will block until this event emit
+        // can potentially block the program if it doesn't get the expected event, such as an emitted value or a completion signal.
+        Integer number = ReactiveSources.intNumberMono().block();  //this method will block until this event emit
         System.out.println(number);
 
         //  using block() should be avoided as it can potentially block the thread and cause performance issues
+        //  so it may not return a value
         //  or with Optional<T>
         Optional<Integer> number1 = ReactiveSources.intNumberMono().blockOptional();
         System.out.println(number1);
