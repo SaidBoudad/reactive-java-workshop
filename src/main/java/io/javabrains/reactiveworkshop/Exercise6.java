@@ -2,6 +2,7 @@ package io.javabrains.reactiveworkshop;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 public class Exercise6 {
 
@@ -15,8 +16,9 @@ public class Exercise6 {
 
         // Get the value from unresponsiveFlux into a String list but give up after 5 seconds
         // Come back and do this when you've learnt about operators!
-        // TODO: Write code here
-
+        List<String> list = ReactiveSources.unresponsiveFlux()
+                .collectList()
+                .block(Duration.ofSeconds(5));
 
         System.out.println("Press a key to end");
         System.in.read();
