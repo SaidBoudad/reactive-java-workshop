@@ -1,5 +1,7 @@
 package io.javabrains.reactiveworkshop;
 
+import reactor.core.publisher.SignalType;
+
 import java.io.IOException;
 
 public class Exercise9 {
@@ -10,7 +12,18 @@ public class Exercise9 {
         // Use ReactiveSources.intNumbersFlux()
 
         // Print size of intNumbersFlux after the last item returns
-        // TODO: Write code here
+        ReactiveSources.intNumbersFluxWithException()
+                .doFinally(signalType -> {
+                    if (signalType == SignalType.ON_COMPLETE) {
+                        System.out.println("Done!");
+                    } else if (signalType == SignalType.ON_ERROR) {
+                        {
+                            System.out.println("Error!");
+                        }
+                    }
+
+                })
+                .subscribe(s);
 
         // Collect all items of intNumbersFlux into a single list and print it
         // TODO: Write code here

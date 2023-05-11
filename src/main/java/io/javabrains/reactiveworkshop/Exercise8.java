@@ -12,13 +12,13 @@ public class Exercise8 {
         // Use ReactiveSources.intNumbersFluxWithException()
 
         // Print values from intNumbersFluxWithException and print a message when error happens
-//        ReactiveSources.intNumbersFluxWithException()
-//                .subscribe(num -> System.out.println(num),
-//                        ex -> System.out.println("An error happened"));
+        ReactiveSources.intNumbersFluxWithException()
+                .subscribe(num -> System.out.println(num),
+                        ex -> System.out.println("An error happened"));
         // or by an alternative way
-//        ReactiveSources.intNumbersFluxWithException()
-//                .doOnError(er -> System.out.println("Error !!!" + er.getMessage())) //the error still occurs
-//                .subscribe(System.out::println);
+        ReactiveSources.intNumbersFluxWithException()
+                .doOnError(er -> System.out.println("Error !!!" + er.getMessage())) //the error still occurs
+                .subscribe(System.out::println);
 
         // Print values from intNumbersFluxWithException and continue on errors
         ReactiveSources.intNumbersFluxWithException()
